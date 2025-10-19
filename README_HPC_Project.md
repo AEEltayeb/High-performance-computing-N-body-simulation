@@ -87,6 +87,14 @@ icpx -fsycl -std=c++17 -O3 -g \
 
 ---
 
+License
+This project is licensed under the MIT License.
+See LICENSE for details.
+
+Author
+A.E. Eltayeb
+GitHub: @AEEltayeb
+
 ## Copying Code Between Windows and WSL
 To copy the GPU source file from Windows to WSL:
 cp /mnt/c/<Windows_project_root>/src/n_body_gpu.cpp ~/HPC_GPU_Project/src/
