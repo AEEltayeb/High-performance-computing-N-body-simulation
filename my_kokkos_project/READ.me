@@ -1,0 +1,81 @@
+
+This project implements and compares multiple versions of a gravitational N-body simulation using different parallelization
+strategies: serial, OpenMP, and Kokkos.
+
+##Project Structure
+
+| File                       | Description                                       |
+|----------------------------|---------------------------------------------------|
+| `serial_nbody.cpp`         | Baseline serial version                           |
+| `parallel_nbody_openmp.cpp`| Parallelized using OpenMP                         |
+| `parallel_nbody.cpp`       | Kokkos flat parallel version (AoS layout)         |
+| `parallel_nbody_v2.cpp`    | Kokkos TeamPolicy + SoA layout                    |
+| `parallel_nbody_v3.cpp`    | Kokkos flat parallel with SoA layout              |
+| `CMakeLists.txt`           | Build configuration for all versions              |
+
+## How to Build
+
+### Prerequisites
+
+- C++17 compatible compiler (e.g., `g++` or `clang++`)
+- CMake ≥ 3.10
+- OpenMP support
+- [Kokkos](https://github.com/kokkos/kokkos) installed with OpenMP backend
+
+### Install Kokkos
+
+```bash
+git clone https://github.com/kokkos/kokkos.git
+cd kokkos
+mkdir build && cd build
+cmake .. -DKokkos_ENABLE_OPENMP=ON -DKokkos_ENABLE_SERIAL=ON -DCMAKE_INSTALL_PREFIX=../install
+make -j
+make install
+
+### Build This Project
+git clone https://github.com/your-username/nbody-hpc.git
+cd nbody-hpc
+mkdir build && cd build
+cmake .. -DKokkos_DIR=</path/to/kokkos/install/lib64/cmake/Kokkos>
+make -j
+
+- Replace </path/to/kokkos/...> with actual Kokkos installation path.
+
+## How to Run
+
+- Each binary runs the simulation with a set number of particles and steps.
+
+./serial_nbody
+./parallel_nbody_openmp
+./parallel_nbody
+./parallel_nbody_v2
+./parallel_nbody_v3
+
+- To change the number of particles or steps, modify the constants in each .cpp file.
+
+### Benchmarking
+To evaluate performance:
+
+- Vary the number of particles: N = {100, 250, 500, 1000, 2000, 4000,...}
+
+- Vary the number of steps: steps = {...,500,200,100,50,10}
+
+
+### Tested Environment
+- OS: Windows 11 (MSYS2)
+
+- CPU: Intel Core i5 @ 2.40GHz, 4 cores / 8 threads
+
+- Compiler: g++ (GCC 13.2+)
+
+- Build System: CMake
+
+- Kokkos: Built with OpenMP backend
+
+
+
+
+
+### Author
+Ahmed Eltayeb
+University of Salerno - High Performance Computing Final Project.

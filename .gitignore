@@ -1,0 +1,59 @@
+# Compiled object files
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dll
+*.dylib
+
+# Compiled Static libraries
+*.lib
+*.a
+
+# Executable files
+*.exe
+*.out
+*.app
+
+# Debug files
+*.dSYM/
+*.stackdump
+
+# Visual Studio files
+*.vcxproj*
+*.sln
+*.user
+*.opensdf
+*.sdf
+*.ipch
+
+# CMake build folders
+/build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Other build folders
+/bin/
+/obj/
+/Debug/
+/Release/
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Misc
+*.log
+*.tmp
+*.swp
+*.bak
+*.~*
+
+# Ignore generated files
+*.generated.*
